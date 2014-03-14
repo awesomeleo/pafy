@@ -663,7 +663,7 @@ class Stream(object):
         except IOError:
             ok = re.compile(r'[^\\/?*$\'"%&:<>|]')
             fname = "".join(x if ok.match(x) else "_" for x in self.filename)
-            outfh = open(fname, 'wb')
+            outfh = open(fname.encode("utf8", "ignore"), 'wb')
 
         while True:
             chunk = response.read(chunksize)
